@@ -6,34 +6,50 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Chetan Jha | Capturing Emotions in Motion</title>
   <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
+
+  <!-- Sticky Navbar -->
+  <nav class="sticky-nav">
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#photography">Photos</a></li>
+      <li><a href="#thumbnails">Graphics</a></li>
+      <li><a href="#videos">Videos</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="toggle-switch">
+      <label>
+        <input type="checkbox" id="darkModeToggle">
+        <span class="slider"></span>
+      </label>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
   <header>
     <div class="hero">
       <div class="overlay">
         <h1>Chetan Jha</h1>
         <p>Capturing Emotions in Motion</p>
-        <nav>
-          <a href="#about">About</a>
-          <a href="#photography">Photos</a>
-          <a href="#thumbnails">Graphics</a>
-          <a href="#videos">Videos</a>
-          <a href="#contact">Contact</a>
-        </nav>
       </div>
     </div>
   </header>
 
+  <!-- About -->
   <section id="about">
     <h2>About Me</h2>
     <p>I’m Chetan — a photographer, videographer, and editor based in Mohali. I capture real emotions, political narratives, hospital journeys, and cinematic stories through the lens.</p>
   </section>
 
+  <!-- Photography -->
   <section id="photography">
     <h2>Photography</h2>
     <p>Explore my candid & commercial captures: <a href="https://www.pexels.com/@chetan-jha-624961868/" target="_blank">Pexels Portfolio</a></p>
   </section>
 
+  <!-- Thumbnails -->
   <section id="thumbnails">
     <h2>Graphics & Thumbnails</h2>
     <div class="thumb-grid">
@@ -45,6 +61,7 @@
     </div>
   </section>
 
+  <!-- Videos -->
   <section id="videos">
     <h2>Video Projects</h2>
     <div class="video-grid">
@@ -57,10 +74,33 @@
     </div>
   </section>
 
+  <!-- Contact -->
   <section id="contact">
     <h2>Contact</h2>
     <p>Email: chetanvlogs5@gmail.com</p>
     <p>Instagram: <a href="https://instagram.com/papparazo0" target="_blank">@papparazo0</a></p>
   </section>
+
+  <!-- JS for animations and dark mode -->
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('fade-in');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('section').forEach(section => {
+      section.classList.add('fade-start');
+      observer.observe(section);
+    });
+
+    const toggle = document.getElementById('darkModeToggle');
+    toggle.addEventListener('change', () => {
+      document.body.classList.toggle('light-mode');
+    });
+  </script>
+
 </body>
 </html>
