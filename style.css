@@ -47,10 +47,27 @@ body.light-mode {
   text-decoration: none;
   font-weight: 600;
   transition: color 0.3s ease;
+  position: relative;
+  padding-bottom: 3px;
+}
+
+.sticky-nav ul li a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #ffa500;
+  transition: width 0.3s ease;
 }
 
 .sticky-nav ul li a:hover {
   color: #ffa500;
+}
+
+.sticky-nav ul li a:hover::after {
+  width: 100%;
 }
 
 /* Dark mode toggle */
@@ -121,6 +138,16 @@ body.light-mode {
 .hero h1 {
   font-size: 3em;
   margin-bottom: 12px;
+  opacity: 0;
+  transform: scale(0.95);
+  animation: heroFadeScale 1s ease forwards 0.3s;
+}
+
+@keyframes heroFadeScale {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 .hero p {
@@ -134,13 +161,23 @@ section {
   max-width: 1000px;
   margin: auto;
   opacity: 0;
-  transform: translateY(20px);
+  transform: translateY(30px);
   transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
 section.fade-in {
-  opacity: 1;
-  transform: translateY(0);
+  animation: fadeSlideUp 0.7s ease forwards;
+}
+
+@keyframes fadeSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Headings */
@@ -173,6 +210,11 @@ a:hover {
   width: 100%;
   height: 200px;
   border-radius: 8px;
+  transition: filter 0.3s ease;
+}
+
+.video-grid iframe:hover {
+  filter: drop-shadow(0 0 10px #ffa500);
 }
 
 /* Thumbnail Grid */
@@ -188,12 +230,12 @@ a:hover {
   height: auto;
   border-radius: 8px;
   box-shadow: 0 0 8px rgba(0,0,0,0.4);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
 .thumb-grid img:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 12px rgba(255,193,7,0.6);
+  transform: scale(1.08);
+  box-shadow: 0 0 20px rgba(255, 193, 7, 0.8);
 }
 
 /* WhatsApp Floating Button */
